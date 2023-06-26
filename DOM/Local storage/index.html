@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form and Login Registration Form with Local storage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Form and Login Registration Form with Local storage</h1>
+    <div class="container">
+      <form id="form">
+        <div class="card">
+          <span>Name -</span>
+          <input
+            class="username"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter your username"
+            required
+          />
+          <br />
+          <span>Password -</span>
+          <input
+            class="password"
+            type="password"
+            name=""
+            id="password"
+            placeholder="Enter the password"
+            required
+          />
+          <br />
+          <button class="btn">Login</button>
+          <button class="btn" id="clear">Clear History</button>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    let form = document.getElementById("form");
+
+    if (localStorage.getItem("username") && localStorage.getItem("password")) {
+      document.getElementById("username").value =
+        localStorage.getItem("username");
+      document.getElementById("username").value =
+        localStorage.getItem("password");
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+
+      // Local storage
+
+      // localStorage.setItem("username", username);
+      // localStorage.setItem("password", password);
+
+      // JSON stringify
+      let username_serialized = JSON.stringify(username);
+      let password_serialized = JSON.stringify(password);
+
+      // console.log(username_serialized);
+      // console.log(password_serialized);
+
+      localStorage.setItem("username", username_serialized);
+      localStorage.setItem("password", password_serialized);
+
+      // console.log(localStorage);
+
+      let username_deserialized = JSON.parse(localStorage.getItem("username"));
+
+      let password_deserialized = JSON.parse(localStorage.getItem("password"));
+
+      // localStorage.setItem("username", username_deserialized);
+      // localStorage.setItem("password", password_deserialized);
+
+      console.log(username_deserialized);
+      console.log(password_deserialized);
+
+      alert("your details are save in localstorage");
+    });
+  </script>
+</html>
