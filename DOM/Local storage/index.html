@@ -21,18 +21,23 @@
             required
           />
           <br />
-          <span>Password -</span>
+          <span>Phone Number -</span>
           <input
-            class="password"
-            type="password"
+            class="phNumber"
+            type="number"
             name=""
-            id="password"
-            placeholder="Enter the password"
+            id="phNumber"
+            placeholder="Enter the Number"
             required
           />
           <br />
           <button class="btn">Login</button>
           <button class="btn" id="clear">Clear History</button>
+          <form class="item-list">
+            <ul id="items" class="list-group">
+              <li class="list-group-item">Username and Phone Number</li>
+            </ul>
+          </form>
         </div>
       </form>
     </div>
@@ -40,46 +45,86 @@
   <script>
     let form = document.getElementById("form");
 
-    if (localStorage.getItem("username") && localStorage.getItem("password")) {
+    let itemList = document.getElementById("items");
+
+    if (localStorage.getItem("username") && localStorage.getItem("phNumber")) {
       document.getElementById("username").value =
         localStorage.getItem("username");
       document.getElementById("username").value =
-        localStorage.getItem("password");
+        localStorage.getItem("phNumber");
     }
 
-    form.addEventListener("submit", (e) => {
+    // form.addEventListener("submit", (e) => {
+    //   e.preventDefault();
+    //   let username = document.getElementById("username").value;
+    //   let phNumber = document.getElementById("phNumber").value;
+
+    //   // Local storage
+
+    //   // localStorage.setItem("username", username);
+    //   // localStorage.setItem("password", password);
+
+    //   // JSON stringify
+    //   let username_serialized = JSON.stringify(username);
+    //   let phNumber_serialized = JSON.stringify(phNumber);
+
+    //   // console.log(username_serialized);
+    //   // console.log(password_serialized);
+
+    //   localStorage.setItem("username", username_serialized);
+    //   localStorage.setItem("phNumber", phNumber_serialized);
+
+    //   // console.log(localStorage);
+
+    //   let username_deserialized = JSON.parse(localStorage.getItem("username"));
+
+    //   let phNumber_deserialized = JSON.parse(localStorage.getItem("phNumber"));
+
+    //   // localStorage.setItem("username", username_deserialized);
+    //   // localStorage.setItem("password", password_deserialized);
+
+    //   console.log(username_deserialized);
+    //   console.log(phNumber_deserialized);
+
+    //   alert("your details are save in localstorage");
+    // });
+
+    form.addEventListener("submit", addItem);
+
+    function addItem(e) {
       e.preventDefault();
+
       let username = document.getElementById("username").value;
-      let password = document.getElementById("password").value;
-
-      // Local storage
-
-      // localStorage.setItem("username", username);
-      // localStorage.setItem("password", password);
+      let phNumber = document.getElementById("phNumber").value;
 
       // JSON stringify
       let username_serialized = JSON.stringify(username);
-      let password_serialized = JSON.stringify(password);
-
-      // console.log(username_serialized);
-      // console.log(password_serialized);
+      let phNumber_serialized = JSON.stringify(phNumber);
 
       localStorage.setItem("username", username_serialized);
-      localStorage.setItem("password", password_serialized);
-
-      // console.log(localStorage);
+      localStorage.setItem("phNumber", phNumber_serialized);
 
       let username_deserialized = JSON.parse(localStorage.getItem("username"));
 
-      let password_deserialized = JSON.parse(localStorage.getItem("password"));
+      let phNumber_deserialized = JSON.parse(localStorage.getItem("phNumber"));
 
-      // localStorage.setItem("username", username_deserialized);
-      // localStorage.setItem("password", password_deserialized);
+      // create new li element
+      let li = document.createElement("li");
+      // Add class
+      li.className = "list-group-item";
+
+      let newText = document.createTextNode(username);
+      let phNumberNode = document.createTextNode(" - " + phNumber);
+
+      // Add text node with input value
+      li.appendChild(newText);
+      li.appendChild(phNumberNode);
+      itemList.appendChild(li);
 
       console.log(username_deserialized);
-      console.log(password_deserialized);
+      console.log(phNumber_deserialized);
 
       alert("your details are save in localstorage");
-    });
+    }
   </script>
 </html>
