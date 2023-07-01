@@ -1,0 +1,67 @@
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: aliceblue;
+  text-align: center;
+  margin-top: 90px;
+  font-size: 65px;
+}
+
+.container {
+  background-color: deepskyblue;
+  width: 600px;
+  height: 500px;
+  border: solid 1px black;
+  margin: 80px auto;
+  border-radius: 25px;
+  border: none;
+  /* text-align: center; */
+  padding-top: 30px;
+  padding-left: 100px;
+}
+
+.label {
+  font-size: 35px;
+  font-weight: 700;
+}
+
+.input {
+  border: none;
+  /* padding: 25px auto; */
+  font-size: 25px;
+  margin-left: 20px;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+#name {
+  margin-left: 156px;
+}
+
+#email {
+  margin-left: 112px;
+}
+
+#phone {
+  margin-left: 18px;
+}
+
+.btn {
+  margin-top: 30px;
+  width: 120px;
+  height: 35px;
+  font-size: 17px;
+  background-color: black;
+  color: aliceblue;
+  border: none;
+  border-radius: 25px;
+  /* align-items: center; */
+  margin-left: 180px;
+}
+
+/* #delBtn {
+  margin-top: 10px;
+} */
